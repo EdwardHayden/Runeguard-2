@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Art Assets/Tilemaps/TimeFantasy_TILES_6.24.17/TILESETS/animated/doors.png" type="Texture" id=1]
+[ext_resource path="res://Envirmonment/Door/Door.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 128, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 128, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 160, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 192, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": false,
+"name": "Closed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": false,
+"name": "Open",
+"speed": 5.0
+} ]
+
+[node name="Door" type="AnimatedSprite"]
+scale = Vector2( 4, 4 )
+frames = SubResource( 5 )
+animation = "Closed"
+playing = true
+script = ExtResource( 2 )

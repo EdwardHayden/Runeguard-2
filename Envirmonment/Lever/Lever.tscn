@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Art Assets/Tilemaps/TimeFantasy_TILES_6.24.17/TILESETS/animated/puzzle.png" type="Texture" id=1]
+[ext_resource path="res://Envirmonment/Lever/Lever.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 112, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 128, 64, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": false,
+"name": "Off",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": false,
+"name": "On",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 4.75
+height = 7.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 25.0
+
+[node name="Lever" type="AnimatedSprite"]
+scale = Vector2( 2, 2 )
+frames = SubResource( 5 )
+animation = "Off"
+playing = true
+offset = Vector2( 0, -10 )
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, -10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, 11.5 )
+rotation = 1.5708
+shape = SubResource( 6 )
+
+[node name="ActivateArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
+shape = SubResource( 7 )

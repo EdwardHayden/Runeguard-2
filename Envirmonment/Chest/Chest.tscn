@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Art Assets/SpriteSheets/timefantasy_characters/timefantasy_characters/sheets/chests.png" type="Texture" id=1]
+[ext_resource path="res://Envirmonment/Chest/Chest.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 126, 144, 42, 36 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 126, 180, 42, 36 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 126, 216, 42, 36 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 126, 252, 42, 36 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 126, 144, 42, 36 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": false,
+"name": "Open",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 12.5, 3.75 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 21.0134
+
+[node name="Chest" type="AnimatedSprite"]
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+animation = "Idle"
+playing = true
+offset = Vector2( 0, -13.802 )
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionBox" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -0.5, 0.5 )
+shape = SubResource( 8 )
+
+[node name="OpenArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpenArea"]
+shape = SubResource( 7 )
